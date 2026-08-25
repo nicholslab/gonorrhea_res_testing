@@ -18,6 +18,8 @@ standard empiric care.
 | `R/gonorrhea_rgt_model.R` | Full analysis script: PSA over resistance scenarios and testing panels, cost-neutral threshold calculation, cost-category disaggregation, and the one-way deterministic sensitivity analysis (Supplement S3). |
 | `README.md` | This file. |
 | `LICENSE` | MIT license. |
+| `results` | folder with final model results files and figures generated. |
+| `figure compilation code` | folder with code used to produce figures. |
 
 ## What the script produces
 
