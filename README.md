@@ -3,7 +3,7 @@ Economic value of gonorrhea resistance testing in the United States
 
 Code accompanying the manuscript *"Economic value of gonorrhea resistance testing
 in the United States: a multi-perspective analysis of when testing pays for
-itself"* (Nichols et al.).
+itself"* ([Nichols et al.).] (https://www.medrxiv.org/content/10.64898/2026.04.07.26350302v1) 
 
 The repository contains an individual-level stochastic simulation model of
 gonorrhea diagnosis and treatment that estimates, for a range of resistance
