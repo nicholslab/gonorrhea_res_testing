@@ -107,7 +107,7 @@ Parameters are drawn from published sources (Table 1 of the manuscript); the mod
 
 | Release | DOI | Corresponds to |
 | --- | --- | --- |
-| `v2.0.0` | *(add on release)* | Revised manuscript (response to peer review), August 2026 |
+| `v2.0.0` | [10.5281/zenodo.22166671] (https://doi.org/10.5281/zenodo.22166671) | Revised manuscript (response to peer review), August 2026 |
 | `v1.0.0` | [10.5281/zenodo.22093355](https://doi.org/10.5281/zenodo.22093355) | Original submitted manuscript |
 
 Each Zenodo release is a permanent, immutable snapshot. Results reported in a given version of the manuscript are reproducible from the correspondingly tagged release.
