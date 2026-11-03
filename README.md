@@ -2,8 +2,7 @@
 Economic value of gonorrhea resistance testing in the United States
 
 Code accompanying the manuscript *"Economic value of gonorrhea resistance testing
-in the United States: a multi-perspective analysis of when testing pays for
-itself"* ([Nichols et al.).] (https://www.medrxiv.org/content/10.64898/2026.04.07.26350302v1) 
+in the United States: a multi-perspective modelling study"* ([Nichols et al.).] (https://www.medrxiv.org/content/10.64898/2026.04.07.26350302v1) 
 
 The repository contains an individual-level stochastic simulation model of
 gonorrhea diagnosis and treatment that estimates, for a range of resistance
@@ -11,30 +10,20 @@ scenarios and testing strategies, the per-episode cost of care and the
 cost-neutral price at which resistance-guided therapy (RGT) breaks even against
 standard empiric care.
 
-> **This release (v2.0.0) accompanies the revised manuscript submitted in response to peer review.** The model has changed substantively since v1.0.0 and the numerical results differ from those in the original submission. See [Version history](#version-history) below. The code and results underlying the original submission remain permanently available at the `v1.0.0` tag and its Zenodo DOI.
+> **This release (v3.0.0) accompanies the revised manuscript submitted in response to peer review.** The model has changed substantively since v1.0.0 and the numerical results differ from those in the original submission. See [Version history](#version-history) below. The code and results underlying the original submission remain permanently available at the `v1.0.0` tag and its Zenodo DOI.
 
-## What changed in v2
+## What changed in v3
 
-Five changes to the model, made in response to reviewer and co-author comments. Each is documented in the header of the model script.
+Updates to figures 2 and 3- partner complication costs have been separated from other partner costs, and have been deduplicated in the updated version. 
 
-**A. Partner infection is now probabilistic.** v1 assumed a partner was infected whenever the index case was truly infected. Partners are now infected with a per-partnership transmission/concordance probability drawn from Beta(20, 24) (mean 0.455, 95% ~0.31–0.60), following fitted estimates for MSM in Tuite et al. 2017 and Reichert et al. 2023.
-
-**B. PID risk is duration-driven rather than symptom-driven.** Li et al. 2022 parameterise PID risk via a continuous-time hazard applied to duration of infection; their symptomatic/asymptomatic split proxies duration rather than acting as an independent risk factor. Dividing their p(PID) by matching duration gives a constant hazard of ~0.147/yr across all three strata, so the model now applies that hazard directly and lets duration carry the treatment effect. Failed treatment accrues additional duration and therefore additional PID risk — the channel through which RGT averts PID, which was absent in v1. The script prints a QC block at run time verifying that the reparameterisation reproduces the Li et al. probabilities in the cured arm.
-
-**C. Age strata blended.** v1 used the 25–39y asymptomatic values only; the two strata are now blended with 55% weight on ages 15–24 (`PID_W_15_24`). The implied hazard is invariant to this weight.
-
-**D. Partner pathway corrections.** Partner symptom status is drawn once per individual rather than twice independently; partner PID is gated on the partner actually being infected; and partner PID is partly averted by successful partner treatment, so notification now averts something.
-
-**E. Common random numbers across arms.** The with-test and without-test arms previously drew separate cohorts, so everything unrelated to the testing decision failed to cancel in the difference. Because that difference is divided by the test-positive share (~0.01 for women), the residual noise was amplified roughly 95-fold, producing threshold intervals of ±$200 that were a Monte Carlo artefact rather than uncertainty. `draw_cohort()` now generates every individual-level random variable once per PSA iteration and runs both arms through the identical cohort, using uniform draws compared against arm-dependent probabilities to keep the coupling monotone. Parameter uncertainty is untouched.
-
-Additionally, **population-weighted thresholds are now computed from the joint per-draw samples** (weighted, then quantiled) rather than by weighting the summarised bounds, so the three groups' independent noise adds in quadrature. This addresses the reviewer's point about naive summation of interval bounds.
+The output underlying all stacked bar charts has also been added to the results folder
 
 ## Contents
 
 | File / folder | Description |
 | --- | --- |
 | `gonorrhea_model_v2_29 Aug.R` | Full analysis script: PSA over resistance scenarios and testing panels, cost-neutral threshold calculation, population-weighted thresholds, cost-category disaggregation, and the one-way deterministic sensitivity analysis (Supplement S3). |
-| `figure compilation code/gonorrhea_figures_v4.R` | Compiles the manuscript figures from the saved model output. |
+| `figure compilation code/gonorrhea_figures_v5.R` | Compiles the manuscript figures from the saved model output. Updated in v3. |
 | `figure compilation code/make_tornado_v4.R` | Standalone tornado-diagram script; reads the saved DSA results, so the model does not need to be re-run to regenerate the figure. |
 | `results/` | Model output files and final figures used in the manuscript. |
 | `LICENSE` | MIT license. |
@@ -107,6 +96,7 @@ Parameters are drawn from published sources (Table 1 of the manuscript); the mod
 
 | Release | DOI | Corresponds to |
 | --- | --- | --- |
+| `v3.0.0` | [] () | Revised manuscript (response to peer review), November 2026 |
 | `v2.0.0` | [10.5281/zenodo.22166671] (https://doi.org/10.5281/zenodo.22166671) | Revised manuscript (response to peer review), August 2026 |
 | `v1.0.0` | [10.5281/zenodo.22093355](https://doi.org/10.5281/zenodo.22093355) | Original submitted manuscript |
 
