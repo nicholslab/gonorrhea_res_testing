@@ -96,7 +96,7 @@ Parameters are drawn from published sources (Table 1 of the manuscript); the mod
 
 | Release | DOI | Corresponds to |
 | --- | --- | --- |
-| `v3.0.0` | [] () | Revised manuscript (response to peer review), November 2026 |
+| `v3.0.0` | [10.5281/zenodo.22093354] (https://doi.org/10.5281/zenodo.22093354) | Revised manuscript (response to peer review), November 2026 |
 | `v2.0.0` | [10.5281/zenodo.22166671] (https://doi.org/10.5281/zenodo.22166671) | Revised manuscript (response to peer review), August 2026 |
 | `v1.0.0` | [10.5281/zenodo.22093355](https://doi.org/10.5281/zenodo.22093355) | Original submitted manuscript |
 
